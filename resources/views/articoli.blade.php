@@ -14,9 +14,9 @@
     @foreach($categories as $category)
         <li class="list-group-item">
             <b>{{$category->nodi_descr}}</b>:<br>
-            @foreach($subcategories as $subcategory)
+            @foreach($subcategories as $key=>$subcategory)
                 @if($subcategory->nodi_ID_padre === $category->nodi_ID)
-                {{$subcategory->nodi_descr}}
+                <span class="ms-3">{{$subcategory->nodi_descr}}({{++$key}})</span>
                 @endif
             @endforeach
         </li>
