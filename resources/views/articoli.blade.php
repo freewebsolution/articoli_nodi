@@ -13,10 +13,10 @@
 <ul class="list-group">
     @foreach($categories as $category)
         <li class="list-group-item">
-            {{$category->nodi_descr}}
+            <b>{{$category->nodi_descr}}</b>:<br>
             @foreach($subcategories as $subcategory)
                 @if($subcategory->nodi_ID_padre === $category->nodi_ID)
-                    {{$subcategory->nodi_descr}}
+                {{$subcategory->nodi_descr}}
                 @endif
             @endforeach
         </li>
