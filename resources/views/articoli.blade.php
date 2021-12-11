@@ -12,14 +12,12 @@
 <body>
 <ul class="list-group">
     @foreach($categories as $category)
-        <li class="list-group-item">
-            <b>{{$category->nodi_descr}}</b>:<br>
-            @foreach($subcategories as $key=>$subcategory)
-                @if($subcategory->nodi_ID_padre === $category->nodi_ID)
-                <span class="ms-3">{{$subcategory->nodi_descr}}({{++$key}})</span>
-                @endif
+        <li>{{$category->nodi_descr}}</li>
+        <ul>
+            @foreach($category->childrenCategories as $child)
+                @include('child_category',['child_category'=>$child])
             @endforeach
-        </li>
+        </ul>
     @endforeach
 </ul>
 </body>

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ArticoliNodi extends Model
 {
-    protected $guarded=['articoli_nodi_ID'];
+    protected $guarded = ['articoli_nodi_ID'];
+    protected $table = 'articoli_nodi';
     use HasFactory;
 }

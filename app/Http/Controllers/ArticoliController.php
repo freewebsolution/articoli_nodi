@@ -16,10 +16,7 @@ class ArticoliController extends Controller
      */
     public function index()
     {
-        $categories = DB::table('nodi')->where('nodi_ID_padre', '=',0)->get();
-        $subcategories = DB::table('nodi')->where('nodi_ID_padre','!=',0)->get();
-        $count = DB::table('nodi')->where('nodi_ID_padre','!=',0)->get()->count();
-        return view('articoli',compact('categories','subcategories','count'));
+
     }
 
     /**
