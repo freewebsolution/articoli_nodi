@@ -1,8 +1,8 @@
-<li>{{$child->nodi_descr}}</li>
-@if($child->nodi_descr)
+<li>{{ $child_category->nodi_descr }}</li>
+@if ($child_category->categories)
     <ul>
-        @foreach($child->nodi_descr as $childCategory)
-            @include('child_category',['child_category'=>$childCategory])
+        @foreach ($child_category->categories as $childCategory)
+            @include('child_category', ['child_category' => $childCategory])
         @endforeach
     </ul>
 @endif

@@ -10,5 +10,9 @@ class ArticoliRami extends Model
     protected $guarded = ['articoli_rami_ID'];
     protected $table = 'articoli_rami';
 
+    public function nodi()
+    {
+        return $this->belongsTo(Nodi::class);
+    }
     use HasFactory;
 }

@@ -12,10 +12,10 @@
 <body>
 <ul class="list-group">
     @foreach($categories as $category)
-        <li>{{$category->nodi_descr}}</li>
+        <li class="list-group-item">{{$category->nodi_descr}}</li>
         <ul>
-            @foreach($category->childrenCategories as $child)
-                @include('child_category',['child_category'=>$child])
+            @foreach ($category->childrenCategories as $childCategory)
+                @include('child_category', ['child_category' => $childCategory])
             @endforeach
         </ul>
     @endforeach
