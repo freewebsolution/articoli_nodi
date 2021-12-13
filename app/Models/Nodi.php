@@ -15,6 +15,12 @@ class Nodi extends Model
     {
         return $this->hasMany(Nodi::class,'nodi_ID_padre','nodi_ID');
     }
+    public function rami(){
+        return $this->hasMany(ArticoliRami::class,'nodi_ID','nodi_ID');
+    }
+    public function nodi(){
+        return $this->hasMany(ArticoliNodi::class,'nodi_ID','nodi_ID');
+    }
 
 
 

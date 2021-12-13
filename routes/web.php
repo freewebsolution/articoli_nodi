@@ -5,3 +5,4 @@ use App\Http\Controllers\NodiController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',[NodiController::class,'index']);
+Route::get('/articoli',[NodiController::class,'articoli']);
