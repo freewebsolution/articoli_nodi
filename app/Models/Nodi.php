@@ -11,14 +11,15 @@ class Nodi extends Model
     protected $table = 'nodi';
     protected $guarded = ['nodi_ID'];
 
-    public function categories()
+    public function childs()
     {
-        return $this->hasMany(Nodi::class,'nodi_ID');
+        return $this->hasMany(Nodi::class,'nodi_ID_padre','nodi_ID');
     }
 
-    public function childrenCategories()
-    {
-        return $this->hasMany(Nodi::class,'nodi_ID_padre')->with('categories');
-    }
+
+
+
+
+
 
 }

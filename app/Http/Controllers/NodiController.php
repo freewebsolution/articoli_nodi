@@ -9,12 +9,10 @@ class NodiController extends Controller
 {
     public function index()
     {
-       $categories= Nodi::where(function ($query) {
-            $query->where('nodi_ID_padre',0);
-        })
-            ->with('childrenCategories')
+        $categories = Nodi::withCount('childs')
+            ->where('nodi_ID_padre', '=', 0)
+            ->where('nodi_ID', '!=', 0)
             ->get();
-
         return view('category', compact('categories'));
     }
 
