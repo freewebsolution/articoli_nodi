@@ -16,11 +16,11 @@ class ArticoliRami extends Model
         return $this->belongsTo(Nodi::class, 'nodi_ID');
     }
 
-    public function counter(int $id): int
+    public function counter(int $nodi_id): int
     {
         return DB::table("articoli_rami")
             ->distinct("articoli_id")
-            ->where("nodi_id", "=", $id)
+            ->where("nodi_id", "=", $nodi_id)
             ->count();
     }
 

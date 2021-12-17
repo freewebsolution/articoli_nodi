@@ -18,7 +18,7 @@ class NodiController extends Controller
 
     public function index()
     {
-        $categories = Nodi::with('childs','rami')
+        $categories = Nodi::with('childs')
             ->where('nodi_ID_padre', '=', 0)
             ->where('nodi_ID', '!=', 0)
             ->get();
