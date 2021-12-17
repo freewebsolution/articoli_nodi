@@ -14,10 +14,7 @@
     @foreach($categories as $category)
         <li>
             {{$category->nodi_descr}}
-            @foreach($rami as $ramo)
-                ({{$rami->counter($ramo->nodi_ID)}})
-            @endforeach
-
+                ({{$rami->counter($category->nodi_ID)}})
             <ul>
                 @foreach($category->childs as $childCategory)
                     @include('child_category',['child_category'=>$childCategory])

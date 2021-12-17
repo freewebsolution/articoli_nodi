@@ -18,7 +18,7 @@ class NodiController extends Controller
 
     public function index()
     {
-        $categories = Nodi::with('childs')
+        $categories = Nodi::with('childs','rami')
             ->where('nodi_ID_padre', '=', 0)
             ->where('nodi_ID', '!=', 0)
             ->get();
@@ -31,7 +31,7 @@ class NodiController extends Controller
         $rami = new ArticoliRami();
         $rami->counter($id);
 
-        return view('category', compact('categories', 'rami', ['rami' => $this->rami->counter($id)]));
+        return view('category', compact('categories', 'id','rami', ['rami' => $this->rami->counter($id)]));
     }
 
     public function articoli()
