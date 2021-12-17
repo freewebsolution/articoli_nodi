@@ -1,4 +1,4 @@
-<li>{{$child_category->nodi_descr}} - ({{ $childCategory->childs->count()}})</li>
+<li>{{$child_category->nodi_descr}}</li>
 @if($child_category->childs)
     <ul>
         @foreach($child_category->childs as $childCategory)

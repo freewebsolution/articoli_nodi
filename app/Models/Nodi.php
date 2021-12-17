@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Nodi extends Model
 {
@@ -21,6 +22,7 @@ class Nodi extends Model
     public function nodi(){
         return $this->hasMany(ArticoliNodi::class,'nodi_ID','nodi_ID');
     }
+
 
 
 

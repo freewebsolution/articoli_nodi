@@ -2,26 +2,45 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ArticoliRami;
 use App\Models\Nodi;
+use Illuminate\Support\Facades\DB;
 
 
 class NodiController extends Controller
 {
+    public $rami;
+
+    public function __construct()
+    {
+        $this->rami = new ArticoliRami();
+    }
+
     public function index()
     {
-        $categories = Nodi::withCount('childs')
+        $categories = Nodi::with('childs')
             ->where('nodi_ID_padre', '=', 0)
             ->where('nodi_ID', '!=', 0)
             ->get();
-        return view('category', compact('categories'));
+        $rami = DB::table('articoli_rami')
+            ->distinct('nodi_ID')
+            ->get();
+        foreach ($rami as $ramo) {
+            $id = $ramo->nodi_ID;
+        }
+        $rami = new ArticoliRami();
+        $rami->counter($id);
+
+        return view('category', compact('categories', 'rami', ['rami' => $this->rami->counter($id)]));
     }
 
-    public function articoli(){
-        $categories = Nodi::withCount('rami','nodi')
-            ->where('nodi_ID','!=',0)
+    public function articoli()
+    {
+        $categories = Nodi::withCount('rami', 'nodi')
+            ->where('nodi_ID', '!=', 0)
             ->get();
         return view('articoli', compact('categories'));
-//        dd($categories);
+
     }
 
 }
