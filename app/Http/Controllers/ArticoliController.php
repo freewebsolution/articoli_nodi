@@ -19,7 +19,7 @@ class ArticoliController extends Controller
 
     public function __construct()
     {
-        $this->rami = new Articoli();
+        $this->rami = new ArticoliRami();
     }
     public function index()
     {
@@ -27,14 +27,11 @@ class ArticoliController extends Controller
             ->Join('articoli_nodi','articoli.articoli_ID','=','articoli_nodi.articoli_ID')
             ->select('articoli.articoli_ID')
             ->get();
-        $rami = new Articoli();
         foreach ($categories as $ramo) {
             $id = $ramo->articoli_ID;
-            $rami->corrupt($id);
         }
-
-
-
+        $rami = new ArticoliRami();
+        $rami->corrupt($id);
         return view('articoli', compact('categories','rami', ['rami' => $this->rami->corrupt($id)]));
     }
 

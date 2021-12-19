@@ -24,6 +24,13 @@ class ArticoliRami extends Model
             ->count();
     }
 
+    public function corrupt(?int $articoli_id):?object
+    {
+        return DB::table('articoli_rami')
+            ->where('articoli_rami.articoli_ID','<>',$articoli_id)
+            ->select('articoli_rami.articoli_ID')
+            ->get();
+    }
 
 
     use HasFactory;
