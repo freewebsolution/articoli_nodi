@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Articoli;
+use App\Models\ArticoliRami;
 use App\Models\Nodi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,10 +15,30 @@ class ArticoliController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public $rami;
+
+    public function __construct()
+    {
+        $this->rami = new Articoli();
+    }
     public function index()
     {
+       $categories= DB::table('articoli')
+            ->Join('articoli_nodi','articoli.articoli_ID','=','articoli_nodi.articoli_ID')
+            ->select('articoli.articoli_ID')
+            ->get();
+        $rami = new Articoli();
+        foreach ($categories as $ramo) {
+            $id = $ramo->articoli_ID;
+            $rami->corrupt($id);
+        }
 
+
+
+        return view('articoli', compact('categories','rami', ['rami' => $this->rami->corrupt($id)]));
     }
+
+
 
     /**
      * Show the form for creating a new resource.

@@ -25,5 +25,6 @@ class ArticoliRami extends Model
     }
 
 
+
     use HasFactory;
 }

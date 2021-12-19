@@ -10,15 +10,21 @@
     <title>Articoli</title>
 </head>
 <body>
-@foreach($categories as $category)
-    <ul class="list-group">
-        @if($category->nodi->count() != $category->rami->count() )
-            <li class="list-group-item">
-                {{$category->nodi_descr}} <button class="btn btn-primary">Repair</button>
-            </li>
-        @endif
-    </ul>
-@endforeach
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <h1 class="text-center">Category list corrupt</h1>
+            @foreach($categories as $category)
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{$rami->corrupt($category->articoli_ID)}}
+                        <button class="btn btn-primary">Repair</button>
+                    </li>
+                </ul>
+            @endforeach
+        </div>
+    </div>
+</div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

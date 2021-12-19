@@ -34,13 +34,5 @@ class NodiController extends Controller
         return view('category', compact('categories', 'id','rami', ['rami' => $this->rami->counter($id)]));
     }
 
-    public function articoli()
-    {
-        $categories = Nodi::withCount('rami', 'nodi')
-            ->where('nodi_ID', '!=', 0)
-            ->get();
-        return view('articoli', compact('categories'));
-
-    }
 
 }
