@@ -11,5 +11,8 @@ class ArticoliNodi extends Model
     protected $guarded = ['articoli_nodi_ID'];
     protected $table = 'articoli_nodi';
 
+    public function articoli(){
+        return $this->belongsTo(ArticoliNodi::class,'articoli_ID');
+    }
     use HasFactory;
 }

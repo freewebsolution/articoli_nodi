@@ -12,7 +12,8 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/">Articles</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -31,12 +32,12 @@
     <div class="row">
         <div class="col-md-6 mx-auto">
             <h1 class="text-center">Category list corrupt</h1>
-            @foreach($categories as $category)
+            @foreach($articoli as $articolo)
                 <ul class="list-group">
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                       @foreach($rami->corrupt($category->articoli_ID) as $corr)
-                           {{$corr->articoli_ID}} <button class="btn btn-primary">Repair</button>
-                           @endforeach
+                        @foreach($articoli->nodiId($articolo->nodi_ID) as $nodoId)
+                            {{$nodoId->nodi_ID}}
+                        @endforeach
                     </li>
                 </ul>
             @endforeach

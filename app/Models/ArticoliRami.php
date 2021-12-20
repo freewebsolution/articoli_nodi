@@ -23,15 +23,5 @@ class ArticoliRami extends Model
             ->where("nodi_id", "=", $nodi_id)
             ->count();
     }
-
-    public function corrupt(?int $articoli_id):?object
-    {
-        return DB::table('articoli_rami')
-            ->where('articoli_rami.articoli_ID','<>',$articoli_id)
-            ->select('articoli_rami.articoli_ID')
-            ->get();
-    }
-
-
     use HasFactory;
 }
