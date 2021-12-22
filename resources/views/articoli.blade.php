@@ -32,11 +32,13 @@
     <div class="row">
         <div class="col-md-6 mx-auto">
             <h1 class="text-center">Category list corrupt</h1>
-            @foreach($articoli as $articolo)
+            @foreach($articoli as $nodi)
                 <ul class="list-group">
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        @foreach($articoli->nodiId($articolo->nodi_ID) as $nodoId)
-                            {{$nodoId->nodi_ID}}
+                        @foreach($nodi->getAllNodiFromArticolo($nodi->articoli_ID) as $nodoId)
+                            @foreach($nodi->checkNodiFromArticoloRami($nodi->articoli_ID,$nodoId->nodi_ID) as $nodiRami)
+                                {{$nodiRami->nodi_ID}}
+                            @endforeach
                         @endforeach
                     </li>
                 </ul>

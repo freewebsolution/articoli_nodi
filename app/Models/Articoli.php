@@ -18,8 +18,14 @@ class Articoli extends Model
     public function articoliRami(){
         return $this->hasMany(ArticoliNodi::class);
     }
-    public function nodiId(int  $articoli_ID):Collection{
+    public function getAllNodiFromArticolo(int $articoli_ID):Collection{
         return ArticoliNodi::distinct()->where('articoli_ID','=', $articoli_ID)->get('nodi_ID');
+    }
+    public function checkNodiFromArticoloRami(int $art_ID,int $nodi_ID):Collection{
+        return ArticoliRami::distinct()
+            ->where('articoli_ID','=', $art_ID)
+            ->where('nodi_ID','=', $nodi_ID)
+            ->get('nodi_ID');
     }
 
     use HasFactory;

@@ -16,22 +16,17 @@ class ArticoliController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public $nodi;
-
-    public function __construct()
-    {
-        $this->nodi = new Articoli();
-    }
+//    public $nodi;
+//
+//    public function __construct(Articoli $articoli)
+//    {
+//        $this->nodi = $articoli;
+//    }
     public function index()
     {
         $articoli = Articoli::distinct()->get(['articoli_ID']);
-        foreach($articoli as $art){
-            $nodi_Id = $art->articoli_ID;
-        }
-        $articoli = new Articoli();
-        $articoli->nodiId($nodi_Id);
 
-        return view('articoli', compact('articoli',['articoli'=>$this->nodi->nodiId($nodi_Id)]));
+        return view('articoli', compact('articoli'));
     }
 
 
